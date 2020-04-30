@@ -1,0 +1,30 @@
+<form id="properties">
+  <label for="should-confine">Confine to Selection Bounding Box</label>
+  <input id="should-confine" name="should-confine" type="checkbox">
+  <fieldset id="x">
+    <legend>x</legend>
+    <label for="x-delta">Delta</label>
+    <input id="x-delta" name="x-delta" type="number" step="any" value="0">
+  </fieldset>
+  <fieldset id="y">
+    <legend>y</legend>
+    <label for="y-delta">Delta</label>
+    <input id="y-delta" name="y-delta" type="number" step="any" value="0">
+  </fieldset>
+  <button type="submit" id="randomize">Randomize</button>
+</form>
+<script>
+
+  const propertiesForm = document.getElementById('properties');
+
+  propertiesForm.onsubmit = (evt) => {
+    evt.preventDefault();
+    evt.stopPropagation();
+    const shouldConfine = propertiesForm.elements['should-confine'].checked;
+    const xDelta = Number.parseFloat(propertiesForm.elements['x-delta'].value);
+    const yDelta = Number.parseFloat(propertiesForm.elements['y-delta'].value);
+    parent.postMessage({ pluginMessage: { type: 'randomize', xDelta, yDelta, shouldConfine } }, '*')
+    return false;
+  }
+
+</script>

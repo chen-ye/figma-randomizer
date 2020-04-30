@@ -1,0 +1,7 @@
+{
+  "name": "Randomizer",
+  "id": "837753524086722854",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html"
+}
